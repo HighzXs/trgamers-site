@@ -1,0 +1,26 @@
+:root {
+  --bg: #0b0b0c;
+  --surface: #141416;
+  --surface-2: #1b1b1e;
+  --border: #26262a;
+  --text: #f2f2f3;
+  --muted: #9a9aa0;
+  --red: #e10e1b;
+  --red-hover: #b80b16;
+
+  --font-body: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --font-head: Bahnschrift, "Segoe UI Semibold", "Arial Narrow", system-ui, sans-serif;
+
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-h3: 1.25rem;
+  --fs-h2: clamp(1.6rem, 3vw, 2.25rem);
+  --fs-h1: clamp(2.1rem, 5.2vw, 4rem);
+
+  --space-section: clamp(56px, 8vw, 104px);
+  --container: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --radius: 6px;
+  --header-h: 68px;
+}

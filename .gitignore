@@ -1,0 +1,26 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependências e builds
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.netlify/
+
+# Editores e ferramentas
+.vscode/
+.idea/
+.claude/
+*.log
+*.tmp
+*.swp
+
+# Segredos
+.env
+.env.*
+
+# Fotos originais em alta resolução (só locais; o site usa os .webp de assets/img)
+assets/img/originals/
