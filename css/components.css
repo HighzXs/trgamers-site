@@ -139,7 +139,7 @@ a.card:hover .card__more { text-decoration: underline; }
 }
 
 /* Produto: imagem */
-.prod__img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0; background: #e9eef0; }
+.prod__img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 0; background: #e9eef0; }
 
 /* Sobre */
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -200,7 +200,7 @@ main:focus { outline: none; }
 }
 
 /* Imagens quadradas, cantos retos */
-.photos img { aspect-ratio: 1 / 1; }
+.photos img { height: auto; aspect-ratio: 1 / 1; }
 .card[hidden] { display: none; }
 
 /* Busca de produtos */
