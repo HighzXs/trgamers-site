@@ -53,7 +53,13 @@ function buildMessage(d) {
 
 function setSum(key, value) {
   const el = sum[key];
-  el.textContent = value || "Não informado";
+  const text = value || "Não informado";
+  if (el.textContent !== text && el.textContent !== "") {
+    el.classList.remove("flash");
+    void el.offsetWidth;
+    el.classList.add("flash");
+  }
+  el.textContent = text;
   el.classList.toggle("is-empty", !value);
 }
 
@@ -84,9 +90,17 @@ function update() {
   store.write();
 }
 
+const LABELS = ["Uso", "Detalhes", "Orçamento", "Preferências", "Finalizar"];
+const countEl = root.querySelector("[data-step-count]");
+
 function go(n, focus = true) {
+  const prev = current;
   current = Math.min(Math.max(n, 1), steps.length);
-  steps.forEach((s, i) => s.classList.toggle("is-active", i + 1 === current));
+  steps.forEach((s, i) => {
+    s.dataset.dir = current < prev ? "back" : "next";
+    s.classList.toggle("is-active", i + 1 === current);
+  });
+  countEl.innerHTML = `Passo <b>${current}</b> de ${steps.length} · ${LABELS[current - 1]}`;
   const last = current === steps.length;
   btnPrev.hidden = current === 1;
   btnNext.hidden = last;

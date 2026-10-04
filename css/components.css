@@ -218,3 +218,80 @@ main:focus { outline: none; }
 .search__count:empty { display: none; }
 .empty { text-align: center; padding: 40px 16px; display: grid; gap: 12px; justify-items: center; }
 .empty[hidden] { display: none; }
+
+/* ===== Celular ===== */
+.wiz__count { display: none; font-size: .8rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin: -12px 0 18px; }
+.wiz__count b { color: var(--text); }
+.card .ico { transition: transform .25s ease; }
+.card:hover > .ico, .card:hover .prod__top .ico { transform: translateY(-3px) scale(1.08); }
+.card__more { display: inline-block; transition: transform .2s ease; }
+a.card:hover .card__more { transform: translateX(5px); text-decoration: none; }
+
+/* Animações de interação */
+.opt input:checked + span, .chip input:checked + span { animation: pick .28s ease; }
+@keyframes pick { 0% { transform: scale(.96); } 55% { transform: scale(1.025); } 100% { transform: scale(1); } }
+.wiz__step.is-active[data-dir="back"] { animation: stepBack .3s ease; }
+@keyframes stepBack { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: none; } }
+.wiz__sum dd.flash { animation: flash .7s ease; }
+@keyframes flash { 0% { color: var(--red); transform: translateX(4px); } 100% { color: inherit; transform: none; } }
+.qform__n { transition: background .25s, transform .25s; }
+.qform__block.is-done .qform__n { background: #2ecc71; color: #06210f; font-size: 0; transform: scale(1.1); }
+.qform__block.is-done .qform__n::after { content: "✓"; font-size: .85rem; font-weight: 700; }
+.selbar__txt.bump { animation: bump .35s ease; }
+@keyframes bump { 40% { transform: scale(1.12); } }
+.stars { display: inline-block; }
+.js .review.is-in .stars { animation: stars 1s ease .2s both; }
+@keyframes stars { from { letter-spacing: -6px; opacity: 0; } to { letter-spacing: 3px; opacity: 1; } }
+.js .prod__img, .js .sobre__banner { transition: opacity .5s ease, transform .4s; }
+.js .prod__img:not(.is-loaded), .js .sobre__banner:not(.is-loaded) { opacity: 0; }
+.prod { overflow: hidden; }
+.prod:hover .prod__img { transform: scale(1.03); }
+.prod__img { transition: transform .4s ease; }
+.band .btn, .cta-final .btn--primary { transition: transform .2s ease, background .2s; }
+.band .btn:hover { transform: translateX(4px); }
+
+@media (max-width: 900px) {
+  .wiz__count { display: block; }
+  .wiz__progress button::after { display: none; }
+  .wiz__progress button { padding-top: 10px; }
+  .wiz__nav, .qform__send {
+    position: sticky; bottom: 0; z-index: 40; margin-inline: calc(var(--gutter) * -1);
+    padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background: rgba(11, 11, 12, .96); border-top: 1px solid var(--border); backdrop-filter: blur(8px);
+  }
+  .wiz__nav { flex-wrap: nowrap; margin-top: 20px; }
+  .wiz__nav .btn { flex: 1; }
+  .wiz__nav [data-prev] { flex: 0 0 auto; }
+  .qform__send { flex-direction: column; align-items: stretch; gap: 8px; }
+  .qform__send .btn { width: 100%; }
+  .qform__send .note { font-size: .78rem; text-align: center; }
+  .has-sticky .wa-float { display: none; }
+}
+
+@media (max-width: 600px) {
+  .cards:has(.prod) { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .prod { padding: 10px; gap: 8px; }
+  .prod h3 { font-size: .85rem; }
+  .prod__top .ico { width: 20px; height: 20px; }
+  .prod__tag { font-size: .65rem; }
+  .prod .btn { font-size: .78rem; padding: 10px 6px; }
+  .search { padding: 14px; }
+  .search .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: -14px; padding: 2px 14px 6px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .search .chips::-webkit-scrollbar { display: none; }
+  .search .chip { flex: none; scroll-snap-align: start; }
+  .map, .map iframe, .map__ph { min-height: 280px; }
+  .selbar { bottom: calc(12px + env(safe-area-inset-bottom)); }
+  .has-selbar .wa-float { bottom: calc(88px + env(safe-area-inset-bottom)); }
+  .opt > span { padding: 14px 16px; }
+  .band { padding: 22px; }
+  .band .btn { width: 100%; }
+  .cta-final .hero__cta .btn, .page-hero .hero__cta .btn { width: 100%; }
+  .section__head { margin-bottom: 24px; }
+  .photos { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition: none !important; }
+  .js .reveal { opacity: 1; transform: none; }
+  .wa-float::after { display: none; }
+}

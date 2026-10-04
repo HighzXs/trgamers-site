@@ -34,6 +34,9 @@ function render() {
   bar.hidden = n === 0;
   document.body.classList.toggle("has-selbar", n > 0);
   txt.textContent = `${n} ${n === 1 ? "produto" : "produtos"} na consulta`;
+  txt.classList.remove("bump");
+  void txt.offsetWidth;
+  txt.classList.add("bump");
   if (n) link.href = waLink(message());
   try { sessionStorage.setItem(KEY, JSON.stringify([...picked])); } catch {}
 }

@@ -83,6 +83,7 @@ def header(active):
     <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
     <nav class="nav" aria-label="Principal">
       {links}
+      <a class="btn nav__wa" {wa()}>{ICON_WA}Falar no WhatsApp</a>
       <a class="btn btn--primary btn--sm" href="/monte-seu-pc/">Monte seu PC</a>
     </nav>
   </div>
@@ -129,7 +130,7 @@ def page(path, active, title, desc, body, hero_preload=False, noindex=False):
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#0b0b0c">
@@ -351,6 +352,7 @@ def wizard():
     return f'''      <div class="wizard" data-wizard>
         <div class="wiz__main">
           <ol class="wiz__progress" aria-label="Etapas">{prog}</ol>
+          <p class="wiz__count" data-step-count aria-live="polite"></p>
           <form novalidate>
             <fieldset class="wiz__step is-active"><legend tabindex="-1">Para que você vai usar?</legend><p class="wiz__hint">Escolha o uso principal.</p>{usos}</fieldset>
             <fieldset class="wiz__step"><legend tabindex="-1">O que vai rodar?</legend><p class="wiz__hint">Marque quantos quiser. Pode pular.</p>{progs}</fieldset>
@@ -538,6 +540,7 @@ pages["/contato/"] = ("/contato/", "Contato e endereço | TR Gamers Informática
           <h3>Endereço</h3><p>R. Salima Mussi Pedro, 3098<br>Franca-SP · 14403-664</p>
           <h3>Horário</h3><table class="hours">{rows}</table><span class="status"></span>
           <a class="btn btn--primary" {wa()}>{ICON_WA}WhatsApp (16) 99207-6444</a>
+          <a class="btn" href="tel:+5516992076444">Ligar agora</a>
           <a class="btn" href="https://www.instagram.com/trgamersinformatica/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
       </div>''', alt=True), False)

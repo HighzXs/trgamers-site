@@ -67,7 +67,16 @@ const BUILDERS = {
 const has = (f, k) => f.getAll(k).some((v) => v && String(v).trim());
 const missing = () => { const f = new FormData(form); return required.filter((k) => !has(f, k)); };
 
+function markDone() {
+  form.querySelectorAll(".qform__block").forEach((b) => {
+    const done = [...b.querySelectorAll("input, select, textarea")].some((el) =>
+      el.type === "radio" || el.type === "checkbox" ? el.checked : el.value.trim() && el.value !== "Selecione");
+    b.classList.toggle("is-done", done);
+  });
+}
+
 function update() {
+  markDone();
   const f = new FormData(form);
   const miss = missing();
   const ok = miss.length === 0;
