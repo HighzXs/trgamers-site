@@ -27,6 +27,7 @@ SPRITE = '''<svg class="sprite" width="0" height="0" aria-hidden="true">
   <symbol id="i-ram" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="1"/><path d="M6 16v2M10 16v2M14 16v2M18 16v2M6 12h2M11 12h2M16 12h2"/></symbol>
   <symbol id="i-mouse" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></symbol>
   <symbol id="i-cable" viewBox="0 0 24 24"><path d="M4 9h5v6H4zM15 9h5v6h-5zM9 12h6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></symbol>
   <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h12v10H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17" r="1.8"/><circle cx="17" cy="17" r="1.8"/></symbol>
 </svg>'''
@@ -214,6 +215,7 @@ def search_block():
         f'<label class="chip"><input type="radio" name="cat" value="{c}"><span>{c}</span></label>' for c in cats)
     return f'''      <div class="search" data-search>
         <div class="search__box">
+          <svg class="ico search__ico" aria-hidden="true"><use href="#i-search"/></svg>
           <label class="sr-only" for="busca">Buscar produtos</label>
           <input id="busca" type="search" placeholder="Buscar produto (ex.: cooler, memória, mouse)" autocomplete="off" maxlength="60">
           <button type="button" class="search__clear" data-clear-search aria-label="Limpar busca" hidden>×</button>
