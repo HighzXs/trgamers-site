@@ -206,8 +206,8 @@ main:focus { outline: none; }
 /* Busca de produtos */
 .search { display: grid; gap: 16px; margin-bottom: 28px; padding: 20px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); }
 .search__box { position: relative; width: 100%; max-width: 560px; }
-.search__ico { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted); pointer-events: none; }
-.search__box input { width: 100%; min-height: 50px; padding: 12px 46px 12px 46px; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); font: inherit; transition: border-color .2s; }
+.search__ico { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted); pointer-events: none; }
+.search__box input { width: 100%; min-height: 50px; padding: 12px 46px 12px 48px; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 999px; font: inherit; transition: border-color .2s; }
 .search__box input::placeholder { color: #6b6b72; }
 .search__box input:focus { outline: none; border-color: var(--red); }
 .search__box input::-webkit-search-cancel-button { display: none; }
