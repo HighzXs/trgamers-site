@@ -77,3 +77,4 @@ document.querySelector("[data-load-map]")?.addEventListener("click", () => {
 if (document.querySelector("[data-wizard]")) import("./builder.js");
 if (document.querySelector("[data-qform]")) import("./qform.js");
 if (document.querySelector("[data-prod]")) import("./products.js");
+if (document.querySelector("[data-search]")) import("./search.js");

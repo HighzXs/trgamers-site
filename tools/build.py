@@ -203,9 +203,24 @@ def info_card(title, text, icon=None, num=None):
 
 def product_card(i):
     name, icon, cat = PRODUCTS[i]
-    return (f'        <article class="card prod card--hover reveal"><img class="prod__img" src="/assets/img/placeholder.webp" alt="" width="400" height="400" loading="lazy">'
+    return (f'        <article class="card prod card--hover reveal" data-name="{name}" data-cat="{cat}"><img class="prod__img" src="/assets/img/placeholder.webp" alt="" width="400" height="400" loading="lazy">'
             f'<div class="prod__top">{ico(icon)}<span class="prod__tag">{cat}</span></div><h3>{name}</h3>'
             f'<button type="button" class="btn btn--sm" data-prod="{name}" aria-pressed="false">Adicionar à consulta</button></article>')
+
+
+def search_block():
+    cats = sorted({c for _, _, c in PRODUCTS})
+    chips_ = '<label class="chip"><input type="radio" name="cat" value="" checked><span>Todos</span></label>' + "".join(
+        f'<label class="chip"><input type="radio" name="cat" value="{c}"><span>{c}</span></label>' for c in cats)
+    return f'''      <div class="search" data-search>
+        <div class="search__box">
+          <label class="sr-only" for="busca">Buscar produtos</label>
+          <input id="busca" type="search" placeholder="Buscar produto (ex.: cooler, memória, mouse)" autocomplete="off" maxlength="60">
+          <button type="button" class="search__clear" data-clear-search aria-label="Limpar busca" hidden>×</button>
+        </div>
+        <div class="chips" role="radiogroup" aria-label="Categoria">{chips_}</div>
+        <p class="search__count" data-count aria-live="polite"></p>
+      </div>'''
 
 
 def review_card(name, text):
@@ -473,7 +488,9 @@ pages["/produtos/"] = ("/produtos/", "Produtos de informática em Franca-SP | TR
     "Fans, coolers, memória RAM, mouse gamer e acessórios em estoque na loja. Consulte disponibilidade no WhatsApp.",
     page_hero("Produtos", "Em estoque na loja", "Marque o que interessa e envie a consulta de uma vez. Valor e disponibilidade a gente confirma com você.",
               "Perguntar no WhatsApp", "Oi, tudo bem? Vim pelo site e queria consultar um produto. Podem me ajudar?", primary=("#catalogo", "Ver produtos"))
-    + "\n" + section(cards([product_card(i) for i in range(len(PRODUCTS))])
+    + "\n" + section(search_block() + cards([product_card(i) for i in range(len(PRODUCTS))])
+                     + '\n      <div class="empty" data-empty hidden><p><b>Nenhum produto encontrado.</b></p><p class="note">Pode ser que a loja tenha. Pergunte direto:</p>'
+                     '<a class="btn btn--primary" data-empty-wa href="#" target="_blank" rel="noopener noreferrer">' + ICON_WA + 'Perguntar no WhatsApp</a></div>'
                      + '\n      <p class="note">O estoque varia. Tem muito mais na loja: peças, periféricos e acessórios. Se não achou, pergunte no WhatsApp.</p>', alt=True, sid="catalogo")
     + "\n" + cta_band("Não achou o que procura?", "Perguntar no WhatsApp", "Oi, tudo bem? Procurei no site e não achei um produto que preciso. Vocês teriam?"), False)
 
