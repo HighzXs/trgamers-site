@@ -17,7 +17,7 @@ if DIST.exists():
     shutil.rmtree(DIST)
 DIST.mkdir()
 
-for f in ["index.html", "404.html", "robots.txt", "sitemap.xml"]:
+for f in ["index.html", "404.html", "robots.txt", "sitemap.xml", "favicon.ico"]:
     shutil.copy2(ROOT / f, DIST / f)
 for d in ["montagem", "upgrade", "manutencao", "notebooks", "produtos", "monte-seu-pc", "sobre", "contato", "css", "js"]:
     shutil.copytree(ROOT / d, DIST / d)

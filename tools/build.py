@@ -141,7 +141,9 @@ def page(path, active, title, desc, body, hero_preload=False, noindex=False):
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
 <meta property="og:image" content="{DOMAIN}/assets/img/banner.webp">
-<link rel="icon" href="/assets/img/icon.webp" type="image/webp">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 {preload}<script src="/js/boot.js"></script>
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/base.css">
